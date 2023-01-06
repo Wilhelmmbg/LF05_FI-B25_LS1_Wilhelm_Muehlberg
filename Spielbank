@@ -1,0 +1,46 @@
+import java.util.Scanner;
+public class Spielbank {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int chip_5 = 0;
+		int chip_10 = 0;
+		int chip_20 = 0;
+		int chip_50 = 0;
+		int chip_100 = 0;
+		int Wert = 0;
+		
+	Scanner tastatur = new Scanner(System.in);
+	
+System.out.print("geben sie an wie viele 5er chips sie haben: ");
+	
+	chip_5 = tastatur.nextInt();
+	
+System.out.print("geben sie an wie viele 10er chips sie haben: ");
+	
+	chip_10 = tastatur.nextInt();
+	
+System.out.print("geben sie an wie viele 20er chips sie haben: ");
+	
+	chip_20 = tastatur.nextInt();
+	
+System.out.print("geben sie an wie viele 50er chips sie haben: ");
+	
+	chip_50 = tastatur.nextInt();
+	
+System.out.print("geben sie an wie viele 100er chips sie haben: ");
+	
+	chip_100 = tastatur.nextInt();
+	
+ Wert = chip_5 * 5 + chip_10 * 10 + chip_20 * 20 + chip_50 * 50 + chip_100 * 100;
+	
+	System.out.println("\n Wert:  " + Wert + " €");
+	
+	
+			
+		
+
+	}
+
+}
