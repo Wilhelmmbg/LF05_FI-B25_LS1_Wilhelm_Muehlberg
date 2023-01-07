@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class BMI {
+
+	public static void main(String[] args) {
+		
+	int BMI, kg;
+	double cm;
+	
+System.out.print("wie viel wiegst du? ");
+	
+	Scanner tastatur = new Scanner(System.in);
+	kg = tastatur.nextInt();
+	
+System.out.print("wie groß bist du? ");
+	
+	cm = tastatur.nextInt();
+		
+	System.out.print("Dein BMI ist " + ( kg / cm ));
+	}
+
+}
