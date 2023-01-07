@@ -1,0 +1,35 @@
+import java.util.Scanner;
+	public class Rabatt_system {
+		
+		public static void main(String[] args) {
+		
+		int Bestellwert;
+		double Rabatt;
+	
+	System.out.print("Wie hoch ist der betrag? ");
+	
+	Scanner tastatur = new Scanner(System.in);
+	
+	Bestellwert = tastatur.nextInt();
+	
+if(Bestellwert >= 0 && Bestellwert < 100){
+
+	System.out.print("der bestellwert nach abzügen beträgt " + (Bestellwert - Bestellwert * 0.10));
+}
+	
+	if(Bestellwert >= 100 && Bestellwert < 500){
+v
+		System.out.print("der bestellwert nach abzügen beträgt " + (Bestellwert - Bestellwert * 0.15));
+	}
+		
+		if(Bestellwert >= 500){
+
+			System.out.print("der bestellwert nach abzügen beträgt " + (Bestellwert - Bestellwert * 0.20));
+		}
+		}
+	}
+
+		
+		
+
+
