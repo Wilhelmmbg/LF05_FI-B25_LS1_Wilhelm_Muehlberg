@@ -1,0 +1,37 @@
+import java.util.Scanner;
+public class Zinsen {
+
+	public static void main(String[] args) {
+		
+		double Einzahlung;
+		double Zinsen;
+		double Jahre;
+		double Ergebniss;
+		
+	
+	System.out.print("Wie viel wollen sie einzahlen? ");
+
+		Scanner tastatur = new Scanner(System.in);
+	
+			Einzahlung = tastatur.nextInt();  
+		
+
+	System.out.print("Wie hoch sind die Zinsen? " );
+		
+			Zinsen = tastatur.nextDouble();
+	
+			
+	System.out.print("Wie viele jahre wollen sie warten? ");
+		
+			Jahre = tastatur.nextInt();
+			
+			Ergebniss = (Einzahlung * Zinsen * Jahre + Einzahlung);
+			
+			System.out.print("Sie haben: "); System.out.print(Ergebniss); System.out.print(" €");
+
+		
+		
+	
+	}
+
+}
