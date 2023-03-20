@@ -1,34 +1,66 @@
 import java.util.Scanner;
 
-class fahrkartenbestellungErfassen {
+class Fahrkartenautomat {
 	public static void main(String[] args) {
+		
+String Hallo = "";
+		
+		Hallo = Beggruessung(Hallo);
+		System.out.print(Hallo);
 
 		Scanner tastatur = new Scanner(System.in);
 
+		double zuZahlenderBetrag;
+		double eingezahlterGesamtbetrag;
+		double eingeworfeneMuenze;
+		double rueckgabebetrag;
+		double nochZuZahlen;
+		double Ticketpreis;
+		double TicketAnzahl;
+
+		// Geldbetrag eingeben	
+		System.out.print("\nWie viel kostet ein Ticket: ");
+		Ticketpreis = tastatur.nextDouble();
 		
-		double zuZahlenderBetrag = 0;
-		double eingezahlterGesamtbetrag = 0;
-		double rueckgabebetrag;		
+		if (Ticketpreis < 0)
+		{ Ticketpreis = 1;
+		System.out.print("Fehlerhafte eingabe - Ticketpreis wird auf 1 gesetzt\n");
+		}
 		
-		System.out.print(Begruessung());
-		zuZahlenderBetrag = fahrkartenbestellungErfassen(tastatur, zuZahlenderBetrag);
-		eingezahlterGesamtbetrag = fahrkartenBezahlen(tastatur, eingezahlterGesamtbetrag, zuZahlenderBetrag); 
+		System.out.print("Anzahl der Tickets: ");
+		TicketAnzahl = tastatur.nextDouble();
+		
+		if (TicketAnzahl > 10)
+		{ TicketAnzahl = 1;
+		System.out.print("Fehlerhafte eingabe - Ticket Anzahl wird auf 1 gesetzt\n");
+		}
+		
+		zuZahlenderBetrag = TicketAnzahl * Ticketpreis;
 		
 		// Geldeinwurf
+		eingezahlterGesamtbetrag = 0.0;
+		nochZuZahlen = 0.0;
+		while (eingezahlterGesamtbetrag < zuZahlenderBetrag) {
+			nochZuZahlen = zuZahlenderBetrag - eingezahlterGesamtbetrag;
+			System.out.printf("Noch zu zahlen: %.2f \n", nochZuZahlen);
+			System.out.print("Eingabe (mind. 5 Cent, höchstens 2 Euro): ");
+			eingeworfeneMuenze = tastatur.nextDouble();
+			eingezahlterGesamtbetrag = eingezahlterGesamtbetrag + eingeworfeneMuenze;
+		}
 		
-
 		// Fahrscheinausgabe
 		System.out.println("\nFahrschein wird ausgegeben");
 		for (int i = 0; i < 8; i++) {
 			System.out.print("=");
 			try {
 				Thread.sleep(200);
-			} catch (InterruptedException e) {
+			} 
+			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 		System.out.println("\n\n");
-
+		
 		// Rückgeldberechnung und -ausgabe
 		rueckgabebetrag = eingezahlterGesamtbetrag - zuZahlenderBetrag;
 		if (rueckgabebetrag > 0.0) {
@@ -38,15 +70,15 @@ class fahrkartenbestellungErfassen {
 			while (rueckgabebetrag >= 20.0) { // 20-Euro-schein
 				System.out.println("20 Euro");
 				rueckgabebetrag = rueckgabebetrag - 20.0;
-			}
+			}	
 			while (rueckgabebetrag >= 10.0) { // 10-Euro-schein
 				System.out.println("10 Euro");
 				rueckgabebetrag = rueckgabebetrag - 10.0;
-			}
+			}	
 			while (rueckgabebetrag >= 5.0) { // 5-Euro-schein
 				System.out.println("5 Euro");
 				rueckgabebetrag = rueckgabebetrag - 5.0;
-			}
+			}	
 			while (rueckgabebetrag >= 2.0) { // 2-Euro-Münzen
 				System.out.println("2 Euro");
 				rueckgabebetrag = rueckgabebetrag - 2.0;
@@ -86,58 +118,11 @@ class fahrkartenbestellungErfassen {
 
 		tastatur.close();
 	}
-
-	public static String Begruessung() {
-
-		String hallo = "Herzlich Wilkommen";
-
-		return hallo;
-	}
-	public static double fahrkartenbestellungErfassen(Scanner tastatur, double zuZahlenderBetrag ) {
-		System.out.print("\nWie viel kostet ein Ticket: ");
-		double Ticketpreis;
-		double TicketAnzahl;
-		Ticketpreis = tastatur.nextDouble();
-
-		if (Ticketpreis < 0) {
-			Ticketpreis = 1;
-			System.out.print("Fehlerhafte eingabe - Ticketpreis wird auf 1 gesetzt\n");
-		}
-
-		System.out.print("Anzahl der Tickets: ");
-		TicketAnzahl = tastatur.nextDouble();
-
-		if (TicketAnzahl > 10) {
-			TicketAnzahl = 1;
-			System.out.print("Fehlerhafte eingabe - Ticket Anzahl wird auf 1 gesetzt\n");
-		}
-
-		zuZahlenderBetrag = TicketAnzahl * Ticketpreis;
-		
-		return zuZahlenderBetrag;
-	}
-	public static double fahrkartenBezahlen(Scanner tastatur,double eingezahlterGesamtbetrag, double zuZahlenderBetrag ) {
-		double eingeworfeneMuenze;
-		double nochZuZahlen;
-		
-		eingezahlterGesamtbetrag = 0.0;
-		nochZuZahlen = 0.0;
-		while (eingezahlterGesamtbetrag < zuZahlenderBetrag) {
-			nochZuZahlen = zuZahlenderBetrag - eingezahlterGesamtbetrag;
-			System.out.printf("Noch zu zahlen: %.2f \n", nochZuZahlen);
-			System.out.print("Eingabe (mind. 1 Cent, höchstens 20 Euro): ");
-			eingeworfeneMuenze = tastatur.nextDouble();
-		
-			if ( eingeworfeneMuenze == 0.05 || eingeworfeneMuenze == 0.10 || eingeworfeneMuenze == 0.20 || eingeworfeneMuenze == 0.50
-					|| eingeworfeneMuenze == 1.00 || eingeworfeneMuenze == 2 || eingeworfeneMuenze == 5 || eingeworfeneMuenze == 10
-					|| eingeworfeneMuenze == 20)
-			eingezahlterGesamtbetrag = eingezahlterGesamtbetrag + eingeworfeneMuenze;
-		 else {
-			System.out.print("Ungültiger betrag");
-			
-			return zuZahlenderBetrag;
-		}}
-		
-	}
 	
+public static String Beggruessung(String Hallo) {
+		
+		Hallo = "Herzlich Wilkommen";
+		
+		return Hallo;
+	}
 }
